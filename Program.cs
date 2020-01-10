@@ -1,4 +1,5 @@
 ﻿using TransactionProcessing.BL.Model;
+using System;
 
 namespace TransactionProcessing
 {
@@ -22,6 +23,8 @@ namespace TransactionProcessing
                 Amount = 1797
             });
 
+            Console.WriteLine(order.AmountDue);
+            Console.WriteLine(order.ShippingStatus);
         }
     }
 }

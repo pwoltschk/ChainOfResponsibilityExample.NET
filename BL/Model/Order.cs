@@ -13,6 +13,14 @@ namespace TransactionProcessing.BL.Model
 
         public decimal AmountDue => LineItems.Sum(item => item.Key.Price * item.Value) - CompletedTransactions.Sum(payment => payment.Amount);
 
+        public ShippingStatus ShippingStatus { get; set; } = ShippingStatus.WaitingForTransaction;
+    }
+    
+    public enum ShippingStatus 
+    { 
+        WaitingForTransaction,
+        ReadyForShippment,
+        Shipped
     }
 
     public enum TransactionProvider
