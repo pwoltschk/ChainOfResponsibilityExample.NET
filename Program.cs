@@ -1,13 +1,26 @@
-﻿using Transaction_processing.BL.Handlers.TransactionHandlers;
-using Transaction_processing.BL.Models;
-using System;
+﻿using TransactionProcessing.BL.Model;
 
-namespace Transaction_processing
+namespace TransactionProcessing
 {
     class Program
     {
         static void Main(string[] args)
         {
+            var order = new Order();
+            order.LineItems.Add(new Item("B0023", "Philips Hue TV 42 Zoll", 1299), 2);
+            order.LineItems.Add(new Item("S0174", "iPhone X", 700), 1);
+
+            order.SelectedTransactions.Add(new Transaction
+            {
+                TransactionProvider = TransactionProvider.Paypal,
+                Amount = 1000
+            });
+
+            order.SelectedTransactions.Add(new Transaction
+            {
+                TransactionProvider = TransactionProvider.Invoice,
+                Amount = 1797
+            });
 
         }
     }
