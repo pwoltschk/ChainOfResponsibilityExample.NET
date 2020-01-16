@@ -4,19 +4,17 @@ using System.Linq;
 
 namespace TransactionProcessing.BL.Handlers.TransactionHandlers
 {
-    public class PaypalHandler : TransactionHandler
+    public class PaypalHandler : IReceiver<Order>
     {
         private PaypalTransactionProcessor PaypalTransactionProcessor { get; }
             = new PaypalTransactionProcessor();
 
-        public override void Handle(Order order)
+        public void Handle(Order order)
         {
             if (order.SelectedTransactions.Any(x => x.TransactionProvider == TransactionProvider.Paypal))
             {
                 PaypalTransactionProcessor.Complete(order);
             }
-
-            base.Handle(order);
         }
     }
 }
