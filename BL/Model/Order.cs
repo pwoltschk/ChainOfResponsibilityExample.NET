@@ -15,38 +15,4 @@ namespace TransactionProcessing.BL.Model
 
         public ShippingStatus ShippingStatus { get; set; } = ShippingStatus.WaitingForTransaction;
     }
-    
-    public enum ShippingStatus 
-    { 
-        WaitingForTransaction,
-        ReadyForShippment,
-        Shipped
-    }
-
-    public enum TransactionProvider
-    {
-        Paypal,
-        Card,
-        Invoice
-    }
-
-    public class Transaction
-    {
-        public decimal Amount { get; set; }
-        public TransactionProvider TransactionProvider { get; set; }
-    }
-
-    public class Item
-    {
-        public string Id { get; }
-        public string Name { get; }
-        public decimal Price { get; }
-
-        public Item(string id, string name, decimal price)
-        {
-            Id = id;
-            Name = name;
-            Price = price;
-        }
-    }
 }
