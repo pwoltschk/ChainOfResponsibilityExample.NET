@@ -1,22 +1,38 @@
 ﻿using TransactionProcessing.BL.Exception;
 using TransactionProcessing.BL.Model;
+using System;
+using System.Collections.Generic;
 
 namespace TransactionProcessing.BL.Handlers.TransactionHandlers
 {
-    public abstract class TransactionHandler : IHandler<Order>
+    public class TransactionHandler
     {
-        private IHandler<Order> Next { get; set; }
+        private readonly IList<IReceiver<Order>> receivers;
 
-        public virtual void Handle(Order order)
+        public TransactionHandler(params IReceiver<Order>[] receivers)
         {
-            if (Next == null && order.AmountDue > 0)
+            this.receivers = receivers;
+        }
+
+        public void Handle(Order order)
+        {
+            foreach (var receiver in receivers)
             {
-                throw new InsufficientBalanceException();
+                Console.WriteLine($"Execution of: {receiver.GetType().Name}");
+
+                if (order.AmountDue > 0)
+                {
+                    receiver.Handle(order);
+                }
+                else
+                {
+                    break;
+                }
             }
 
             if (order.AmountDue > 0)
             {
-                Next.Handle(order);
+                throw new InsufficientBalanceException();
             }
             else
             {
@@ -24,11 +40,9 @@ namespace TransactionProcessing.BL.Handlers.TransactionHandlers
             }
         }
 
-        public IHandler<Order> SetNext(IHandler<Order> next)
+        public void SetNext(IReceiver<Order> next)
         {
-            Next = next;
-
-            return Next;
+            receivers.Add(next);
         }
     }
 }
