@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace TransactionProcessing.BL.Handlers.TransactionHandlers
 {
-    public class InvoiceHandler : IReceiver<Order>
+    public class InvoiceReceiver : IReceiver<Order>
     {
         public InvoiceTransactionProcessor InvoiceTransactionProcessor { get; }
             = new InvoiceTransactionProcessor();

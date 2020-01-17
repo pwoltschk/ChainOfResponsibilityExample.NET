@@ -30,9 +30,9 @@ namespace TransactionProcessing
 
 
             var handler = new TransactionHandler(
-                new PaypalHandler(),
-                new InvoiceHandler(), 
-                new CardHandler()
+                new PaypalReceiver(),
+                new InvoiceReceiver(), 
+                new CardReceiver()
             );
 
             handler.Handle(order);
