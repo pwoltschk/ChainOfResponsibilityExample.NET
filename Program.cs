@@ -28,9 +28,12 @@ namespace TransactionProcessing
             Console.WriteLine(order.AmountDue);
             Console.WriteLine(order.ShippingStatus);
 
-            var handler = new PaypalHandler();
-            handler.SetNext(new CardHandler())
-                .SetNext(new InvoiceHandler());
+
+            var handler = new TransactionHandler(
+                new PaypalHandler(),
+                new InvoiceHandler(), 
+                new CardHandler()
+            );
 
             handler.Handle(order);
 
