@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace TransactionProcessing.BL.Handlers.TransactionHandlers
 {
-    public class PaypalHandler : IReceiver<Order>
+    public class PaypalReceiver : IReceiver<Order>
     {
         private PaypalTransactionProcessor PaypalTransactionProcessor { get; }
             = new PaypalTransactionProcessor();
