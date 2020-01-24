@@ -6,14 +6,18 @@ namespace TransactionProcessing.BL.Handlers.TransactionHandlers
 {
     public class PaypalReceiver : IReceiver<Order>
     {
-        private PaypalTransactionProcessor PaypalTransactionProcessor { get; }
-            = new PaypalTransactionProcessor();
+        private readonly PaypalTransactionProcessor _paypalTransactionProcessor;
+
+        public PaypalReceiver(PaypalTransactionProcessor paypalTransactionProcessor)
+        {
+            _paypalTransactionProcessor = paypalTransactionProcessor;
+        }
 
         public void Handle(Order order)
         {
             if (order.SelectedTransactions.Any(x => x.TransactionProvider == TransactionProvider.Paypal))
             {
-                PaypalTransactionProcessor.Complete(order);
+                _paypalTransactionProcessor.Complete(order);
             }
         }
     }
