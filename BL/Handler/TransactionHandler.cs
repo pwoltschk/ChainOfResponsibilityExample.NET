@@ -1,7 +1,7 @@
-﻿using TransactionProcessing.BL.Exception;
-using TransactionProcessing.BL.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using TransactionProcessing.BL.Exception;
+using TransactionProcessing.BL.Model;
 
 namespace TransactionProcessing.BL.Handlers.TransactionHandlers
 {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TransactionProcessing.BL.Exception
+﻿namespace TransactionProcessing.BL.Exception
 {
     public class InsufficientBalanceException : System.Exception
     {

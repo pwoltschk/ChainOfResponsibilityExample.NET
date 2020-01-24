@@ -11,8 +11,8 @@ namespace TransactionProcessing.BL.Model
 
         public IList<Transaction> CompletedTransactions { get; } = new List<Transaction>();
 
-        public decimal AmountDue => LineItems.Sum(item => item.Key.Price * item.Value) - CompletedTransactions.Sum(payment => payment.Amount);
+        public decimal AmountDue => LineItems.Sum(item => item.Key.Price * item.Value) - CompletedTransactions.Sum(transaction => transaction.Amount);
 
-        public ShippingStatus ShippingStatus { get; set; } = ShippingStatus.WaitingForTransaction;
+        public ShippingStatus ShippingStatus { get; set; } = ShippingStatus.WaitingForSettlement;
     }
 }
