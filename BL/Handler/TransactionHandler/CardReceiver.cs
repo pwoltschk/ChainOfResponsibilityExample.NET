@@ -1,6 +1,6 @@
-﻿using TransactionProcessing.BL.Model;
+﻿using System.Linq;
+using TransactionProcessing.BL.Model;
 using TransactionProcessing.BL.TransactionProcessors;
-using System.Linq;
 
 namespace TransactionProcessing.BL.Handlers.TransactionHandlers
 {

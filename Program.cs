@@ -1,6 +1,6 @@
-﻿using TransactionProcessing.BL.Handlers.TransactionHandlers;
+﻿using System;
+using TransactionProcessing.BL.Handlers.TransactionHandlers;
 using TransactionProcessing.BL.Model;
-using System;
 
 namespace TransactionProcessing
 {
@@ -31,7 +31,7 @@ namespace TransactionProcessing
 
             var handler = new TransactionHandler(
                 new PaypalReceiver(),
-                new InvoiceReceiver(), 
+                new InvoiceReceiver(),
                 new CardReceiver()
             );
 

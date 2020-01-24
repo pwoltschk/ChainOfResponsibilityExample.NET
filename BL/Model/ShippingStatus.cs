@@ -1,8 +1,8 @@
 ﻿namespace TransactionProcessing.BL.Model
 {
-    public enum ShippingStatus 
-    { 
-        WaitingForTransaction,
+    public enum ShippingStatus
+    {
+        WaitingForSettlement,
         ReadyForShippment,
         Shipped
     }
