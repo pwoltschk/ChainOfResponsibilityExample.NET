@@ -1,6 +1,7 @@
 ﻿using System;
 using TransactionProcessing.BL.Handlers.TransactionHandlers;
 using TransactionProcessing.BL.Model;
+using TransactionProcessing.BL.TransactionProcessors;
 
 namespace TransactionProcessing
 {
@@ -28,11 +29,10 @@ namespace TransactionProcessing
             Console.WriteLine(order.AmountDue);
             Console.WriteLine(order.ShippingStatus);
 
-
             var handler = new TransactionHandler(
-                new PaypalReceiver(),
-                new InvoiceReceiver(),
-                new CardReceiver()
+                new PaypalReceiver(new PaypalTransactionProcessor()),
+                new InvoiceReceiver(new InvoiceTransactionProcessor()),
+                new CardReceiver(new CardTransactionProcessor())
             );
 
             handler.Handle(order);

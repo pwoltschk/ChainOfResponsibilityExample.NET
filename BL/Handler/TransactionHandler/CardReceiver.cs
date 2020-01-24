@@ -6,14 +6,18 @@ namespace TransactionProcessing.BL.Handlers.TransactionHandlers
 {
     public class CardReceiver : IReceiver<Order>
     {
-        public CardTransactionProcessor CardTransactionProcessor { get; }
-            = new CardTransactionProcessor();
+        public readonly CardTransactionProcessor _cardTransactionProcessor;
+
+        public CardReceiver(CardTransactionProcessor cardTransactionProcessor)
+        {
+            _cardTransactionProcessor = cardTransactionProcessor;
+        }
 
         public void Handle(Order order)
         {
             if (order.SelectedTransactions.Any(x => x.TransactionProvider == TransactionProvider.Card))
             {
-                CardTransactionProcessor.Complete(order);
+                _cardTransactionProcessor.Complete(order);
             }
         }
     }
