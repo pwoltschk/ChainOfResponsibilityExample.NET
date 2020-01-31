@@ -1,4 +1,4 @@
-﻿namespace TransactionProcessing.BL.Handlers
+﻿namespace TransactionProcessor.BL.Handler
 {
     public interface IReceiver<T> where T : class
     {
