@@ -1,9 +1,10 @@
 ﻿using System;
-using TransactionProcessing.BL.Handlers.TransactionHandlers;
+using TransactionProcessor.BL.Handler.TransactionHandler;
 using TransactionProcessing.BL.Model;
-using TransactionProcessing.BL.TransactionProcessors;
+using TransactionProcessor.BL.Model;
+using TransactionProcessor.BL.TransactionProcessors;
 
-namespace TransactionProcessing
+namespace TransactionProcessor
 {
     class Program
     {
@@ -44,6 +45,7 @@ namespace TransactionProcessing
         private static TransactionHandler BootstrapCoR()
         {
             return new TransactionHandler(
+                new CreditBalanceReceiver(new CreditBalanceTransactionProcessor()),
                 new PaypalReceiver(new PaypalTransactionProcessor()),
                 new InvoiceReceiver(new InvoiceTransactionProcessor()),
                 new CardReceiver(new CardTransactionProcessor())

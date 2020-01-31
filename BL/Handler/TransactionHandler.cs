@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using TransactionProcessing.BL.Exception;
-using TransactionProcessing.BL.Model;
+using TransactionProcessor.BL.Exception;
+using TransactionProcessor.BL.Model;
 
-namespace TransactionProcessing.BL.Handlers.TransactionHandlers
+namespace TransactionProcessor.BL.Handler.TransactionHandler
 {
     public class TransactionHandler
     {

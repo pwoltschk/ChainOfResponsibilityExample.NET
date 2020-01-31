@@ -1,6 +1,6 @@
-﻿using TransactionProcessing.BL.Model;
+﻿using TransactionProcessor.BL.Model;
 
-namespace TransactionProcessing.BL.TransactionProcessors
+namespace TransactionProcessor.BL.TransactionProcessors
 {
     public interface ITransactionProcessor
     {

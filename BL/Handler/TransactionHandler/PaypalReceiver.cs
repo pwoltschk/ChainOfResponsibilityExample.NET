@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using TransactionProcessing.BL.Model;
-using TransactionProcessing.BL.TransactionProcessors;
+using TransactionProcessor.BL.Model;
+using TransactionProcessor.BL.TransactionProcessors;
 
-namespace TransactionProcessing.BL.Handlers.TransactionHandlers
+namespace TransactionProcessor.BL.Handler.TransactionHandler
 {
     public class PaypalReceiver : IReceiver<Order>
     {

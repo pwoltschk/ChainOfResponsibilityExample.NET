@@ -1,4 +1,4 @@
-﻿namespace TransactionProcessing.BL.Model
+﻿namespace TransactionProcessor.BL.Model
 {
     public class Item
     {

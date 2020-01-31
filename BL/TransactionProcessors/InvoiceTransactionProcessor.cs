@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using TransactionProcessing.BL.Model;
+using TransactionProcessor.BL.Model;
 
-namespace TransactionProcessing.BL.TransactionProcessors
+namespace TransactionProcessor.BL.TransactionProcessors
 {
     public class InvoiceTransactionProcessor : ITransactionProcessor
     {
