@@ -9,6 +9,19 @@ namespace TransactionProcessing
     {
         static void Main(string[] args)
         {
+
+            var handler = BootstrapCoR();
+            Order order = CreateOrder();
+
+            PrintOrderState(order);
+
+            handler.Handle(order);
+
+            PrintOrderState(order);
+        }
+
+        private static Order CreateOrder()
+        {
             var order = new Order();
 
             order.LineItems.Add(new Item("B0023", "Philips Hue TV 42 Zoll", 1299), 2);
@@ -17,26 +30,28 @@ namespace TransactionProcessing
             order.SelectedTransactions.Add(new Transaction
             {
                 TransactionProvider = TransactionProvider.Paypal,
-                Amount = 1000
+                Amount = 500
             });
 
             order.SelectedTransactions.Add(new Transaction
             {
                 TransactionProvider = TransactionProvider.Invoice,
-                Amount = 1797
+                Amount = 400
             });
+            return order;
+        }
 
-            Console.WriteLine(order.AmountDue);
-            Console.WriteLine(order.ShippingStatus);
-
-            var handler = new TransactionHandler(
+        private static TransactionHandler BootstrapCoR()
+        {
+            return new TransactionHandler(
                 new PaypalReceiver(new PaypalTransactionProcessor()),
                 new InvoiceReceiver(new InvoiceTransactionProcessor()),
                 new CardReceiver(new CardTransactionProcessor())
             );
+        }
 
-            handler.Handle(order);
-
+        private static void PrintOrderState(Order order)
+        {
             Console.WriteLine(order.AmountDue);
             Console.WriteLine(order.ShippingStatus);
         }
