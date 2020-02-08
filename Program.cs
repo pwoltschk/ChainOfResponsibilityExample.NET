@@ -44,6 +44,7 @@ namespace TransactionProcessor
         private static TransactionHandler BootstrapCoR()
         {
             return new TransactionHandler(
+                new CreditBalanceReceiver(new CreditBalanceTransactionProcessor()),
                 new PaypalReceiver(new PaypalTransactionProcessor()),
                 new InvoiceReceiver(new InvoiceTransactionProcessor()),
                 new CardReceiver(new CardTransactionProcessor())
