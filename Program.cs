@@ -26,17 +26,28 @@ namespace TransactionProcessor
 
             order.LineItems.Add(new Item("B0023", "Philips Hue TV 42 Zoll", 1299), 2);
             order.LineItems.Add(new Item("S0174", "iPhone X", 700), 1);
+            order.LineItems.Add(new Item("D0012", "Macbook Pro", 1320), 3);
 
             order.SelectedTransactions.Add(new Transaction
             {
+                TransactionProvider = TransactionProvider.Balance,
+                Amount = 399
+            });
+            order.SelectedTransactions.Add(new Transaction
+            {
                 TransactionProvider = TransactionProvider.Paypal,
-                Amount = 500
+                Amount = 900
             });
 
             order.SelectedTransactions.Add(new Transaction
             {
+                TransactionProvider = TransactionProvider.Card,
+                Amount = 700
+            });
+            order.SelectedTransactions.Add(new Transaction
+            {
                 TransactionProvider = TransactionProvider.Invoice,
-                Amount = 400
+                Amount = 1320
             });
             return order;
         }

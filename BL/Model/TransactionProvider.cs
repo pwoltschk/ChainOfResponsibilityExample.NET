@@ -4,6 +4,7 @@
     {
         Paypal,
         Card,
-        Invoice
+        Invoice,
+        Balance
     }
 }
